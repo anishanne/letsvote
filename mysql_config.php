@@ -1,5 +1,5 @@
 <?php
-    define('DB_SERVER', 'localhost:3036');
+    define('DB_SERVER', 'localhost:3306');
     define('DB_USERNAME', 'username');
     define('DB_PASSWORD', 'password');
     define('DB_DATABASE', 'database');
@@ -7,4 +7,3 @@
 
     if ($db === false)
         die("Uh-oh, MySQL connection error: " . mysqli_connect_error());
-
