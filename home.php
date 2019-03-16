@@ -26,7 +26,7 @@
 </div>
 <p>
     <a href="gen_code.php" class="btn btn-primary">Generate a Code</a>
-    <a href="flag_code.php" class="btn btn-danger">Disable a Code</a>
+    <a href="delete_code.php" class="btn btn-danger">Disable a Code</a>
     <a href="reset_password.php" class="btn btn-warning">Reset Your Password</a>
     <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
 </p>
