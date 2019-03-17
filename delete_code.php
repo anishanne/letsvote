@@ -44,7 +44,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         mysqli_stmt_close($stmt);
     }
+    $sql = "INSERT INTO log (user, action) VALUES (?,?)";
+    if ($stmt = mysqli_prepare($db, $sql)) {
+        mysqli_stmt_bind_param($stmt, "ss", $p_user,$p_log);
+        $p_user=$_SESSION["username"];
+        $p_log="Deleted code that started with ".mb_substr($code, 0, -29)." at ".date("Y/m/d")." at ".date("h:i:s");
+        if (!mysqli_stmt_execute($stmt)) {
+            echo "oops: " . mysqli_stmt_error($stmt);
+        }
 
+    }
     mysqli_close($db);
 }
 
