@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
+    header("location: home.php");
+    exit;
+}
 require_once "mysql_config.php";
 
 $result = mysqli_query($db,"SELECT * FROM 	candidates");
