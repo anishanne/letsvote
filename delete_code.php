@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+<body background="background.jpeg">
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
@@ -69,6 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         body {
             font: 14px sans-serif;
             text-align: center;
+            color: white;
         }
     </style>
 </head>
@@ -85,5 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </form>
 </div>
+<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 </html>

@@ -83,6 +83,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<body background="background.jpeg">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -90,6 +91,7 @@
     <style type="text/css">
         body {
             font: 14px sans-serif;
+            color: white;
         }
 
         .wrapper {

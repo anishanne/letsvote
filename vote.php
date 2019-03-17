@@ -101,13 +101,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<body background="background.jpeg">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<link rel="stylesheet" type="text/css" href="vote.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <title>Vote</title>
 </head>
-
+<font color = "white">
 <body>
 
 <h2>Vote Form</h2>
@@ -157,7 +158,13 @@
             <input type="submit" class="btn btn-primary" value="Vote">
         </div>
     </form>
+    <!--<button type="button" class="btn btn-primary><a href="Back">nuvote.ml</button>
+    <form action="/" method="post">
+        <input type="submit" class="btn btn-primary" value="Back">
+    </form>-->
+    <a href="/" class="btn btn-primary">Back to Home Page</a>
 </div>
 
 </body>
+</font>
 </html>

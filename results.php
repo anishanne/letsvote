@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<body background="background.jpeg">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" type="text/css" href="vote.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <title>Vote</title>
+</head>
+<font color = "white">
+<body>
 <?php
 require_once "mysql_config.php";
 
@@ -24,3 +35,7 @@ echo "</table>";
 
 mysqli_close($db);
 ?>
+<a href="/" class="btn btn-primary">Back to Home Page</a>
+</body>
+<font>
+</html>

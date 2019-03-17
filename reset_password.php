@@ -66,6 +66,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<body background="background.jpeg">
 <head>
     <meta charset="UTF-8">
     <title>Reset Password</title>
@@ -73,6 +74,7 @@
     <style type="text/css">
         body {
             font: 14px sans-serif;
+            color: white;
         }
 
         .wrapper {
@@ -102,5 +104,6 @@
         </div>
     </form>
 </div>
+<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 </html>
