@@ -29,20 +29,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    if (empty($code_err) && $id !== -1) {
-        $sql = "UPDATE vote_codes SET valid = 1 WHERE id = ?";
-
+    if (empty($code_err)) {
+        $sql = "UPDATE vote_codes SET valid = 1 WHERE vote_code = ?";
         if ($stmt = mysqli_prepare($db, $sql)) {
-            mysqli_stmt_bind_param($stmt, "i", $param_id);
-
-            $param_id = $id;
-
+            mysqli_stmt_bind_param($stmt, "s", $ccode);
+            $ccode=$code;
             if (!mysqli_stmt_execute($stmt)) {
                 echo "oops: " . mysqli_stmt_error($stmt);
             }
         }
-
-        mysqli_stmt_close($stmt);
     }
 
     mysqli_close($db);
