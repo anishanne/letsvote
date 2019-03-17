@@ -1,134 +1,53 @@
 <?php
-    session_start();
+session_start();
 
-    if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
-        header("location: home.php");
-        exit;
+if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
+    header("location: home.php");
+    exit;
+}
+
+require_once "mysql_config.php";
+
+$code = $code_err = "";
+$id = -1;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty(trim($_POST["code"]))) {
+        $code_err = "Please enter a code.";
+    } else {
+        $code = trim($_POST["code"]);
     }
 
-    require_once "mysql_config.php";
-
-    $code = $code_err = "";
-    $id = -1;
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty(trim($_POST["code"]))) {
-            $code_err = "Please enter a code.";
-        } else {
-            $code = trim($_POST["code"]);
-        }
-
-        if (empty($code_err)) {
-			    
-			//$sql = "DELETE FROM votes WHERE vote_code='$code'";
-	
-			//if ($db->query($sql) == TRUE) {
-			//	echo " ";
-			//} //else {
-					//echo "Error deleting record: " . $db->error;
-				//}
-
-			//$db->close();
-            $sql = "DELETE FROM votes WHERE vote_code = ?";
-			$stmt = $db->prepare($sql);
-			$stmt->bind_param("s", $ccode);
-			$ccode=$code;
-			$stmt->execute();
-			
-			
-			
-            /*if ($stmt = mysqli_prepare($db, $sql)) {
-                mysqli_stmt_bind_param($stmt, "s", $param_code);
-
-                $param_code = $code;
-
-                if (mysqli_stmt_execute($stmt)) {
-                    mysqli_stmt_store_result($stmt);
-
-                    if (mysqli_stmt_num_rows($stmt) == 1) {
-                        mysqli_stmt_bind_result($stmt, $id);
-                        mysqli_stmt_fetch($stmt);
-                    } else {
-                        $code_err = "Unknown code.";
-                    }
-                } else {
-                    echo "oops";
-                }
+    if (empty($code_err)) {
+        $sql = "DELETE FROM votes WHERE vote_code = ?";
+        if ($stmt = mysqli_prepare($db, $sql)) {
+            mysqli_stmt_bind_param($stmt, "s", $ccode);
+            $ccode=$code;
+            if (!mysqli_stmt_execute($stmt)) {
+                echo "oops: " . mysqli_stmt_error($stmt);
             }
-
-            mysqli_stmt_close($stmt);*/
         }
-
-        if (empty($code_err) && $id !== -1) {
-            $sql = "UPDATE vote_codes SET valid = 0 WHERE id = ?";
-
-            if ($stmt = mysqli_prepare($db, $sql)) {
-                mysqli_stmt_bind_param($stmt, "i", $param_id);
-
-                $param_id = $id;
-
-                if (!mysqli_stmt_execute($stmt)) {
-                    echo "oops: " . mysqli_stmt_error($stmt);
-                }
-            }
-
-            mysqli_stmt_close($stmt);
-        }
-
-        mysqli_close($db);
     }
 
-	
-	
-	
-    require_once "mysql_config.php";
+    if (empty($code_err) && $id !== -1) {
+        $sql = "UPDATE vote_codes SET valid = 0 WHERE id = ?";
 
-    $code = $code_err = "";
-    $id = -1;
+        if ($stmt = mysqli_prepare($db, $sql)) {
+            mysqli_stmt_bind_param($stmt, "i", $param_id);
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty(trim($_POST["code"]))) {
-            $code_err = "Please enter a code.";
-        } else {
-            $code = trim($_POST["code"]);
-        }
+            $param_id = $id;
 
-        if (empty($code_err)) {
-			    
-			//$sql = "DELETE FROM votes WHERE vote_code='$code'";
-	
-			//if ($db->query($sql) == TRUE) {
-			//	echo " ";
-			//} //else {
-					//echo "Error deleting record: " . $db->error;
-				//}
-
-			$db->close();
-            $sql = "DELETE FROM votes WHERE vote_code='?'";
-
-            if ($stmt = mysqli_prepare($db, $sql)) {
-                mysqli_stmt_bind_param($stmt, "s", $param_code);
-
-                $param_code = $code;
-
-                if (mysqli_stmt_execute($stmt)) {
-                    mysqli_stmt_store_result($stmt);
-
-                    if (mysqli_stmt_num_rows($stmt) == 1) {
-                        mysqli_stmt_bind_result($stmt, $id);
-                        mysqli_stmt_fetch($stmt);
-                    } else {
-                        $code_err = "Unknown code.";
-                    }
-                } else {
-                    echo "oops";
-                }
+            if (!mysqli_stmt_execute($stmt)) {
+                echo "oops: " . mysqli_stmt_error($stmt);
             }
-
-            mysqli_stmt_close($stmt);
         }
-        mysqli_close($db);
+
+        mysqli_stmt_close($stmt);
     }
+
+    mysqli_close($db);
+}
+
 ?>
 
 <!DOCTYPE html>
