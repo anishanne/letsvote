@@ -77,5 +77,6 @@
         </div>
     </form>
 </div>
+<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 </html>
