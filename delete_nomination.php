@@ -25,7 +25,7 @@ require_once "mysql_config.php";
 $code = random_str();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $sql = "INSERT INTO candidates (user) VALUES (?)";
+    $sql = "DELETE FROM candidates WHERE user = ?";
 
     if ($stmt = mysqli_prepare($db, $sql)) {
         mysqli_stmt_bind_param($stmt, "s", $param_code);
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt = mysqli_prepare($db, $sql)) {
         mysqli_stmt_bind_param($stmt, "ss", $p_user,$p_log);
         $p_user=$_SESSION["username"];
-        $p_log="Added nomination for ".$code." at ".date("Y/m/d")." at ".date("h:i:s");
+        $p_log="Removed nomination for ".$code." at ".date("Y/m/d")." at ".date("h:i:s");
         if (!mysqli_stmt_execute($stmt)) {
             echo "oops: " . mysqli_stmt_error($stmt);
         }
@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span class="help-block"><?php echo $code_err; ?></span>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Add Nomination">
+            <input type="submit" class="btn btn-primary" value="Remove Nomination">
         </div>
     </form>
 </div>

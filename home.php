@@ -9,6 +9,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<body background="background.jpeg">
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
@@ -16,20 +17,28 @@
     <style type="text/css">
         body {
             font: 14px sans-serif;
-            text-align: center;
+            text-align: left;
         }
     </style>
 </head>
 <body>
+<center>
 <div class="page-header">
     <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to the admin panel.</h1>
 </div>
-<p>
-    <a href="gen_code.php" class="btn btn-primary">Generate a Code</a>
-    <a href="delete_code.php" class="btn btn-danger">Disable a Code</a>
-    <a href="reset_code.php" class="btn btn-warning">Reset a Code</a>
-    <a href="reset_password.php" class="btn btn-danger">Reset Your Password</a>
-    <a href="logout.php" class="btn btn-primary">Sign Out of Your Account</a>
-</p>
+</center>
+<p><a href="gen_code.php" class="btn btn-primary">    Generate a Code     </a>    This will generate a new code, be sure to click generate first.<br /><br /><br />
+    <a href="delete_code.php" class="btn btn-danger">     Disable a Code     </a>    This will deactivate a code.<br /><br /><br />
+    <a href="reset_code.php" class="btn btn-warning">      Reset a Code      </a>    This will allow the code to be used to vote again.<br /><br /><br />
+    <a href="nominate.php" class="btn btn-danger">      Nominate A Person      </a>    This will allow to nominate people for the next election.<br /><br /><br />
+    <a href="delete_nominate.php" class="btn btn-primary">      Delete a Nomination      </a>    This will allow to remove nominations from the next election.<br /><br /><br />
+    <a href="current_nominations.php" class="btn btn-danger">      View Current Nominations      </a>    This will allow to view nominations for the next election.<br /><br /><br />
+    <a href="reset_password.php" class="btn btn-warning">   Reset Your Password  </a>    This is to reset your password.<br /><br /><br />
+    <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>    This is to logout.<br /><br /><br /><br /><br /><br />
+<a href="/" class="btn btn-warning">Back to Home Page</a></p>
+
+
+
+
 </body>
 </html>
