@@ -124,34 +124,34 @@
         <div class="form-group <?php echo (!empty($c1_err)) ? 'has-error' : ''; ?>">
             <label>Candidate 1</label>
             <!--<input type="text" name="candidate_one" class="form-control" value="<?php echo $c1; ?>">-->
-			<select name="candidate_one" class="form-control" value="<?php echo $c1; ?>">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="fiat">Fiat</option>
-				<option value="audi">Audi</option>
-			</select>
+            <select name="candidate_one" class="form-control" value="<?php echo $c1; ?>">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="fiat">Fiat</option>
+                <option value="audi">Audi</option>
+            </select>
             <span class="help-block"><?php echo $c1_err; ?></span>
         </div>
         <div class="form-group <?php echo (!empty($c2_err)) ? 'has-error' : ''; ?>">
             <label>Candidate 2</label>
             <!--<input type="text" name="candidate_two" class="form-control" value="<?php echo $c2; ?>">-->
-			<select name="candidate_two" class="form-control" value="<?php echo $c2; ?>">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="fiat">Fiat</option>
-				<option value="audi">Audi</option>
-			</select>
+            <select name="candidate_two" class="form-control" value="<?php echo $c2; ?>">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="fiat">Fiat</option>
+                <option value="audi">Audi</option>
+            </select>
             <span class="help-block"><?php echo $c2_err; ?></span>
         </div>
         <div class="form-group <?php echo (!empty($c3_err)) ? 'has-error' : ''; ?>">
             <label>Candidate 3</label>
             <!--<input type="text" name="candidate_three" class="form-control" value="<?php echo $c3; ?>">-->
-			<select name="candidate_three" class="form-control" value="<?php echo $c3; ?>">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="fiat">Fiat</option>
-				<option value="audi">Audi</option>
-			</select>
+            <select name="candidate_three" class="form-control" value="<?php echo $c3; ?>">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="fiat">Fiat</option>
+                <option value="audi">Audi</option>
+            </select>
             <span class="help-block"><?php echo $c3_err; ?></span>
         </div>
         <div class="form-group">

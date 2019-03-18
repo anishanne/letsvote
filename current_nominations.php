@@ -1,28 +1,27 @@
 <?php
-session_start();
+    session_start();
 
-if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
-    header("location: home.php");
-    exit;
-}
-require_once "mysql_config.php";
+    if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
+        header("location: home.php");
+        exit;
+    }
+    require_once "mysql_config.php";
 
-$result = mysqli_query($db,"SELECT * FROM 	candidates");
+    $result = mysqli_query($db, "SELECT * FROM 	candidates");
 
-echo "<table border='1'>
+    echo "<table border='1'>
 <tr>
 <th>Users Nominated</th>
 </tr>";
 
-while($row = mysqli_fetch_array($result))
-{
-    echo "<tr>";
-    echo "<td>" . $row['user'] . "</td>";
-    echo "</tr>";
-}
-echo "</table>";
+    while ($row = mysqli_fetch_array($result)) {
+        echo "<tr>";
+        echo "<td>" . $row['user'] . "</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
 
-mysqli_close($db);
+    mysqli_close($db);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,5 +43,4 @@ mysqli_close($db);
 </div>
 <a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
-
 </html>
