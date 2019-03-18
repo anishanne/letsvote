@@ -1,16 +1,3 @@
-<?php
-    function random_str()
-    {
-        $keyspace = 'abcdefghijklmnopqrstuvwxyz';
-        $pieces = [];
-        $max = mb_strlen($keyspace, '8bit') - 1;
-        for ($i = 0; $i < 32; ++$i) {
-            $pieces [] = $keyspace[random_int(0, $max)];
-        }
-        return implode('', $pieces);
-    }
-
-?>
 
 <?php
     session_start();
