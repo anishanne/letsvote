@@ -7,13 +7,12 @@
     }
     require_once "mysql_config.php";
 
-    $result = mysqli_query($db, "SELECT * FROM 	candidates");
+    $result = mysqli_query($db, "SELECT * FROM candidates");
 
     echo "<table border='1'>
 <tr>
 <th>Users Nominated</th>
 </tr>";
-
     while ($row = mysqli_fetch_array($result)) {
         echo "<tr>";
         echo "<td>" . $row['user'] . "</td>";
@@ -41,6 +40,6 @@
 <body>
 <div class="page-header">
 </div>
-<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
+<a href="home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 </html>

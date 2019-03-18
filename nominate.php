@@ -7,34 +7,43 @@
     }
 
     require_once "mysql_config.php";
-    require_once "gen_code.php";
 
-    $code = random_str();
+    $nominee = $nominee_err = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (empty(trim($_POST["nominee"]))) {
+            $nominee_err = "Work with me here...";
+        } else {
+            $nominee = trim($_POST["nominee"]);
+        }
+
         $sql = "INSERT INTO candidates (user) VALUES (?)";
 
         if ($stmt = mysqli_prepare($db, $sql)) {
-            mysqli_stmt_bind_param($stmt, "s", $param_code);
-
-            $param_code = $code;
+            mysqli_stmt_bind_param($stmt, "s", $nominee);
 
             if (!mysqli_stmt_execute($stmt)) {
                 echo "oops: " . mysqli_stmt_error($stmt);
             }
+
+            mysqli_stmt_close($stmt);
         }
 
-        mysqli_stmt_close($stmt);
         $sql = "INSERT INTO log (user, action) VALUES (?,?)";
+
         if ($stmt = mysqli_prepare($db, $sql)) {
             mysqli_stmt_bind_param($stmt, "ss", $p_user, $p_log);
+
             $p_user = $_SESSION["username"];
             $p_log = "Added nomination for " . $code . " at " . date("Y/m/d") . " at " . date("h:i:s");
+
             if (!mysqli_stmt_execute($stmt)) {
                 echo "oops: " . mysqli_stmt_error($stmt);
             }
 
+            mysqli_stmt_close($stmt);
         }
+
         mysqli_close($db);
     }
 ?>
@@ -54,12 +63,12 @@
     </style>
 </head>
 <body>
-<div class="page-header">
+<div class="wrapper">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="form-group <?php echo (!empty($code_err)) ? 'has-error' : ''; ?>">
+        <div class="form-group <?php echo (!empty($nominee_err)) ? 'has-error' : ''; ?>">
             <label>User</label>
-            <input type="text" name="code" class="form-control">
-            <span class="help-block"><?php echo $code_err; ?></span>
+            <input type="text" name="nominee" class="form-control" value="<?php echo $nominee; ?>">
+            <span class="help-block"><?php echo $nominee_err; ?></span>
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Add Nomination">
