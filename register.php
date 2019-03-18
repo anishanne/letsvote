@@ -1,4 +1,4 @@
-<?php
+<!--<?php/*
     require_once "mysql_config.php";
 
     $username = $password = $confirm_password = "";
@@ -79,7 +79,8 @@
         }
 
         mysqli_close($db);
-    }
+    }*/
+
 ?>
 
 <!DOCTYPE html>
@@ -131,4 +132,5 @@
 </div>
 <a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
-</html>
+</html>-->
+Registration Closed. Contact anishanne on AoPS via PM to reopen. This is for NU mods and admins ONLY!

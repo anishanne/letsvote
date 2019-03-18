@@ -184,6 +184,7 @@
         <input type="submit" class="btn btn-primary" value="Back">
     </form>-->
     <a href="/" class="btn btn-primary">Back to Home Page</a>
+    <a href="public_nominations.php" class="btn btn-primary">Current Nominations</a>
 </div>
 
 </body>
