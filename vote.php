@@ -85,7 +85,7 @@
                 $param_valid = 0;
                 $param_vote_code = $code;
                 if (mysqli_stmt_execute($stmt)) {
-                    header("location: index.html");
+                    header("location: congrats.php");
                     exit;
                 } else {
                     echo "Something went wrong.";
