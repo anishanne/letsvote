@@ -1,4 +1,3 @@
-
 <?php
     session_start();
 
@@ -8,6 +7,7 @@
     }
 
     require_once "mysql_config.php";
+    require_once "gen_code.php";
 
     $code = random_str();
 
