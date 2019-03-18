@@ -1,4 +1,32 @@
 <?php
+    function valid_candidate($username)
+    {
+        require_once "mysql_config.php";
+
+        global $db;
+        $sql = "SELECT * FROM candidates WHERE user = ?";
+        if ($stmt = mysqli_prepare($db, $sql)) {
+            mysqli_stmt_bind_param($stmt, "s", $username);
+
+            if (mysqli_stmt_execute($stmt)) {
+                mysqli_stmt_store_result($stmt);
+
+                return mysqli_stmt_num_rows($stmt) == 1;
+            } else {
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        } else {
+            return false;
+        }
+
+        mysqli_stmt_close($stmt);
+
+        return false;
+    }
+
+?>
+
+<?php
     require "mysql_config.php";
 
     $code = $c1 = $c2 = $c3 = "";
@@ -14,19 +42,31 @@
         if (trim(empty($_POST["candidate_one"]))) {
             $c1_err = "Candidate must be provided";
         } else {
-            $c1 = $_POST["candidate_one"];
+            if (valid_candidate($_POST["candidate_one"])) {
+                $c1 = trim($_POST["candidate_one"]);
+            } else {
+                $c1_err = "Invalid candidate";
+            }
         }
 
         if (trim(empty($_POST["candidate_two"]))) {
             $c2_err = "Candidate must be provided";
         } else {
-            $c2 = $_POST["candidate_two"];
+            if (valid_candidate($_POST["candidate_two"])) {
+                $c2 = trim($_POST["candidate_two"]);
+            } else {
+                $c2_err = "Invalid candidate";
+            }
         }
 
         if (trim(empty($_POST["candidate_three"]))) {
             $c3_err = "Candidate must be provided";
         } else {
-            $c3 = $_POST["candidate_three"];
+            if (valid_candidate($_POST["candidate_three"])) {
+                $c3 = trim($_POST["candidate_three"]);
+            } else {
+                $c3_err = "Invalid candidate";
+            }
         }
 
         if (empty($code_err) && empty($c1_err) && empty($c2_err) && empty($c3_err)) {
@@ -101,7 +141,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<body background="background.jpeg">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<link rel="stylesheet" type="text/css" href="vote.css">-->
@@ -123,35 +162,17 @@
         </div>
         <div class="form-group <?php echo (!empty($c1_err)) ? 'has-error' : ''; ?>">
             <label>Candidate 1</label>
-            <!--<input type="text" name="candidate_one" class="form-control" value="<?php echo $c1; ?>">-->
-            <select name="candidate_one" class="form-control" value="<?php echo $c1; ?>">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="fiat">Fiat</option>
-                <option value="audi">Audi</option>
-            </select>
+            <input type="text" name="candidate_one" class="form-control" value="<?php echo $c1; ?>">
             <span class="help-block"><?php echo $c1_err; ?></span>
         </div>
         <div class="form-group <?php echo (!empty($c2_err)) ? 'has-error' : ''; ?>">
             <label>Candidate 2</label>
-            <!--<input type="text" name="candidate_two" class="form-control" value="<?php echo $c2; ?>">-->
-            <select name="candidate_two" class="form-control" value="<?php echo $c2; ?>">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="fiat">Fiat</option>
-                <option value="audi">Audi</option>
-            </select>
+            <input type="text" name="candidate_two" class="form-control" value="<?php echo $c2; ?>">
             <span class="help-block"><?php echo $c2_err; ?></span>
         </div>
         <div class="form-group <?php echo (!empty($c3_err)) ? 'has-error' : ''; ?>">
             <label>Candidate 3</label>
-            <!--<input type="text" name="candidate_three" class="form-control" value="<?php echo $c3; ?>">-->
-            <select name="candidate_three" class="form-control" value="<?php echo $c3; ?>">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="fiat">Fiat</option>
-                <option value="audi">Audi</option>
-            </select>
+            <input type="text" name="candidate_three" class="form-control" value="<?php echo $c3; ?>">
             <span class="help-block"><?php echo $c3_err; ?></span>
         </div>
         <div class="form-group">
