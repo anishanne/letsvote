@@ -108,63 +108,63 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <title>Vote</title>
 </head>
-<font color = "white">
-<body>
+<font color="white">
+    <body>
 
-<h2>Vote Form</h2>
+    <h2>Vote Form</h2>
 
-<div class="wrapper">
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="form-group <?php echo (!empty($code_err)) ? 'has-error' : ''; ?>">
-            <label>Voting Code</label>
-            <input type="text" name="voting_code" class="form-control" value="<?php echo $code; ?>">
+    <div class="wrapper">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group <?php echo (!empty($code_err)) ? 'has-error' : ''; ?>">
+                <label>Voting Code</label>
+                <input type="text" name="voting_code" class="form-control" value="<?php echo $code; ?>">
 
-            <span class="help-block"><?php echo $code_err; ?></span>
-        </div>
-        <div class="form-group <?php echo (!empty($c1_err)) ? 'has-error' : ''; ?>">
-            <label>Candidate 1</label>
-            <!--<input type="text" name="candidate_one" class="form-control" value="<?php echo $c1; ?>">-->
-			<select name="candidate_one" class="form-control" value="<?php echo $c1; ?>">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="fiat">Fiat</option>
-				<option value="audi">Audi</option>
-			</select>
-            <span class="help-block"><?php echo $c1_err; ?></span>
-        </div>
-        <div class="form-group <?php echo (!empty($c2_err)) ? 'has-error' : ''; ?>">
-            <label>Candidate 2</label>
-            <!--<input type="text" name="candidate_two" class="form-control" value="<?php echo $c2; ?>">-->
-			<select name="candidate_two" class="form-control" value="<?php echo $c2; ?>">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="fiat">Fiat</option>
-				<option value="audi">Audi</option>
-			</select>
-            <span class="help-block"><?php echo $c2_err; ?></span>
-        </div>
-        <div class="form-group <?php echo (!empty($c3_err)) ? 'has-error' : ''; ?>">
-            <label>Candidate 3</label>
-            <!--<input type="text" name="candidate_three" class="form-control" value="<?php echo $c3; ?>">-->
-			<select name="candidate_three" class="form-control" value="<?php echo $c3; ?>">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="fiat">Fiat</option>
-				<option value="audi">Audi</option>
-			</select>
-            <span class="help-block"><?php echo $c3_err; ?></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Vote">
-        </div>
-    </form>
-    <!--<button type="button" class="btn btn-primary><a href="Back">nuvote.ml</button>
-    <form action="/" method="post">
-        <input type="submit" class="btn btn-primary" value="Back">
-    </form>-->
-    <a href="/" class="btn btn-primary">Back to Home Page</a>
-</div>
+                <span class="help-block"><?php echo $code_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($c1_err)) ? 'has-error' : ''; ?>">
+                <label>Candidate 1</label>
+                <!--<input type="text" name="candidate_one" class="form-control" value="<?php echo $c1; ?>">-->
+                <select name="candidate_one" class="form-control" value="<?php echo $c1; ?>">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="fiat">Fiat</option>
+                    <option value="audi">Audi</option>
+                </select>
+                <span class="help-block"><?php echo $c1_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($c2_err)) ? 'has-error' : ''; ?>">
+                <label>Candidate 2</label>
+                <!--<input type="text" name="candidate_two" class="form-control" value="<?php echo $c2; ?>">-->
+                <select name="candidate_two" class="form-control" value="<?php echo $c2; ?>">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="fiat">Fiat</option>
+                    <option value="audi">Audi</option>
+                </select>
+                <span class="help-block"><?php echo $c2_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($c3_err)) ? 'has-error' : ''; ?>">
+                <label>Candidate 3</label>
+                <!--<input type="text" name="candidate_three" class="form-control" value="<?php echo $c3; ?>">-->
+                <select name="candidate_three" class="form-control" value="<?php echo $c3; ?>">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="fiat">Fiat</option>
+                    <option value="audi">Audi</option>
+                </select>
+                <span class="help-block"><?php echo $c3_err; ?></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Vote">
+            </div>
+        </form>
+        <!--<button type="button" class="btn btn-primary><a href="Back">nuvote.ml</button>
+        <form action="/" method="post">
+            <input type="submit" class="btn btn-primary" value="Back">
+        </form>-->
+        <a href="/" class="btn btn-primary">Back to Home Page</a>
+    </div>
 
-</body>
+    </body>
 </font>
 </html>

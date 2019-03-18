@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <title>Vote</title>
 </head>
-<font color = "white">
-<body>
-<?php
-require_once "mysql_config.php";
+<font color="white">
+    <body>
+    <?php
+        require_once "mysql_config.php";
 
-$result = mysqli_query($db,"SELECT * FROM votes");
+        $result = mysqli_query($db, "SELECT * FROM votes");
 
-echo "<table border='1'>
+        echo "<table border='1'>
 <tr>
 <th>Voting Code</th>
 <th>First Choice For Mod/Admin</th>
@@ -22,20 +22,19 @@ echo "<table border='1'>
 <th>Third Choice For Mod/Admin</th>
 </tr>";
 
-while($row = mysqli_fetch_array($result))
-{
-echo "<tr>";
-echo "<td>" . $row['vote_code'] . "</td>";
-echo "<td>" . $row['candidate_one'] . "</td>";
-echo "<td>" . $row['candidate_two'] . "</td>";
-echo "<td>" . $row['candidate_three'] . "</td>";
-echo "</tr>";
-}
-echo "</table>";
+        while ($row = mysqli_fetch_array($result)) {
+            echo "<tr>";
+            echo "<td>" . $row['vote_code'] . "</td>";
+            echo "<td>" . $row['candidate_one'] . "</td>";
+            echo "<td>" . $row['candidate_two'] . "</td>";
+            echo "<td>" . $row['candidate_three'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
 
-mysqli_close($db);
-?>
-<a href="/" class="btn btn-primary">Back to Home Page</a>
-</body>
-<font>
+        mysqli_close($db);
+    ?>
+    <a href="/" class="btn btn-primary">Back to Home Page</a>
+    </body>
+    <font>
 </html>
