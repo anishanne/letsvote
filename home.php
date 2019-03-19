@@ -36,10 +36,11 @@
     the results for the elction with the voting codes.<br/><br/><br/>
     <a href="nominate.php" class="btn btn-danger"> Nominate A Person </a> This will allow to nominate people for the
     next election.<br/><br/><br/>
-    <a href="delete_nominate.php" class="btn btn-danger"> Delete a Nomination </a> This will allow to remove
+    <a href="delete_nomination.php" class="btn btn-danger"> Delete a Nomination </a> This will allow to remove
     nominations from the next election.<br/><br/><br/>
     <a href="current_nominations.php" class="btn btn-danger"> View Current Nominations </a> This will allow to view
     nominations for the next election.<br/><br/><br/>
+    <a href="reset_election.php" class="btn btn-warning"> Reset Election </a> WARNING: This command can not be reversed.<br/><br/><br/>
     <a href="reset_password.php" class="btn btn-warning"> Reset Your Password </a> This is to reset your
     password.<br/><br/><br/>
     <a href="logout.php" class="btn btn-warning">Sign Out of Your Account</a> This is to logout.<br/><br/><br/><br/>

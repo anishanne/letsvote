@@ -7,35 +7,39 @@
     }
 
     require_once "mysql_config.php";
-    require_once "gen_code.php";
-
-    $code = random_str();
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $sql = "DELETE FROM candidates WHERE user = ?";
-
-        if ($stmt = mysqli_prepare($db, $sql)) {
-            mysqli_stmt_bind_param($stmt, "s", $param_code);
-
-            $param_code = $code;
-
-            if (!mysqli_stmt_execute($stmt)) {
-                echo "oops: " . mysqli_stmt_error($stmt);
-            }
+        if (empty(trim($_POST["code"]))) {
+            $code_err = "Please enter a code.";
+        } else {
+            $code = trim($_POST["code"]);
         }
 
-        mysqli_stmt_close($stmt);
-        $sql = "INSERT INTO log (user, action) VALUES (?,?)";
-        if ($stmt = mysqli_prepare($db, $sql)) {
-            mysqli_stmt_bind_param($stmt, "ss", $p_user, $p_log);
-            $p_user = $_SESSION["username"];
-            $p_log = "Removed nomination for " . $code . " at " . date("Y/m/d") . " at " . date("h:i:s");
-            if (!mysqli_stmt_execute($stmt)) {
-                echo "oops: " . mysqli_stmt_error($stmt);
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $sql = "DELETE FROM candidates WHERE user = ?";
+
+            if ($stmt = mysqli_prepare($db, $sql)) {
+                mysqli_stmt_bind_param($stmt, "s", $param_code);
+
+                $param_code = $code;
+
+                if (!mysqli_stmt_execute($stmt)) {
+                    echo "oops: " . mysqli_stmt_error($stmt);
+                }
             }
 
+            mysqli_stmt_close($stmt);
+            $sql = "INSERT INTO log (user, action) VALUES (?,?)";
+            if ($stmt = mysqli_prepare($db, $sql)) {
+                mysqli_stmt_bind_param($stmt, "ss", $p_user, $p_log);
+                $p_user = $_SESSION["username"];
+                $p_log = "Removed nomination for " . $code . " at " . date("Y/m/d") . " at " . date("h:i:s");
+                if (!mysqli_stmt_execute($stmt)) {
+                    echo "oops: " . mysqli_stmt_error($stmt);
+                }
+
+            }
+            mysqli_close($db);
         }
-        mysqli_close($db);
     }
 ?>
 
