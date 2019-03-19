@@ -41,7 +41,7 @@ echo "</table>";
 
 mysqli_close($db);
 ?>
-<a href="/" class="btn btn-primary">Back to Home Page</a>
+<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 
 </html>

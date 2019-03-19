@@ -40,6 +40,7 @@
     nominations from the next election.<br/><br/><br/>
     <a href="current_nominations.php" class="btn btn-danger"> View Current Nominations </a> This will allow to view
     nominations for the next election.<br/><br/><br/>
+    <a href="front_text.php" class="btn btn-warning"> Change Front Page Text </a> This is to change the text on the front page.<br/><br/><br/>
     <a href="reset_election.php" class="btn btn-warning"> Reset Election </a> WARNING: This command can not be reversed.<br/><br/><br/>
     <a href="reset_password.php" class="btn btn-warning"> Reset Your Password </a> This is to reset your
     password.<br/><br/><br/>
