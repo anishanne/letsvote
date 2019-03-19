@@ -153,7 +153,7 @@
 <h2>Vote Form</h2>
 
 <div class="wrapper">
-    <br action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group <?php echo (!empty($code_err)) ? 'has-error' : ''; ?>">
             <label>Voting Code</label>
             <input type="text" name="voting_code" class="form-control" value="<?php echo $code; ?>">
@@ -174,8 +174,9 @@
             <label>Candidate 3</label>
             <input type="text" name="candidate_three" class="form-control" value="<?php echo $c3; ?>">
             <span class="help-block"><?php echo $c3_err; ?></span>
+            By voting, you agree to the <a href="rules.php">Nerds United Election Rules.</a></br>
         </div>
-        By voting, you agree to the <a href="rules.php">Nerds United Election Rules.</a></br>
+
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Vote">
         </div>
