@@ -35,7 +35,7 @@
             mysqli_stmt_bind_param($stmt, "ss", $p_user, $p_log);
 
             $p_user = $_SESSION["username"];
-            $p_log = "Added nomination for " . $code . " at " . date("Y/m/d") . " at " . date("h:i:s");
+            $p_log = "Added nomination for " . $nominee . " at " . date("Y/m/d") . " at " . date("h:i:s");
 
             if (!mysqli_stmt_execute($stmt)) {
                 echo "oops: " . mysqli_stmt_error($stmt);

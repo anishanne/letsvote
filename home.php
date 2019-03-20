@@ -32,6 +32,7 @@
     <a href="delete_code.php" class="btn btn-primary"> Disable a Code </a> This will deactivate a code.<br/><br/><br/>
     <a href="reset_code.php" class="btn btn-primary"> Reset a Code </a> This will allow the code to be used to vote
     again.<br/><br/><br/>
+    <a href="stop_voting.php" class="btn btn-primary"> Stop/Start Voting </a> This will stop/start voting.<br/><br/><br/>
     <a href="admin_results.php" class="btn btn-primary"> View Results </a> This will allow to view
     the results for the elction with the voting codes.<br/><br/><br/>
     <a href="nominate.php" class="btn btn-danger"> Nominate A Person </a> This will allow to nominate people for the

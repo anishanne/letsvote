@@ -93,7 +93,6 @@
     <style type="text/css">
         body {
             font: 14px sans-serif;
-            color: white;
         }
 
         .wrapper {
@@ -133,4 +132,4 @@
 <a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 </html>-->
-Registration Closed. Contact anishanne on AoPS via PM to reopen. This is for NU mods and admins ONLY!
+

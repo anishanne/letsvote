@@ -29,14 +29,30 @@
 <?php
     require "mysql_config.php";
 
-    $code = $c1 = $c2 = $c3 = "";
+    /*$code = $c1 = $c2 = $c3 = "";
     $code_err = $c1_err = $c2_err = $c3_err = "";
+    $sql = "SELECT * FROM votingActive WHERE 1"
+    $result = db->query($sql);
 
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            if ($row["text"] == "no"){
+                $code_err = "Voting code must be provided";
+
+            }
+        }
+    } else {
+        echo "0 results";
+    }
+    db->close();*/
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (trim(empty($_POST["voting_code"]))) {
             $code_err = "Voting code must be provided";
         } else {
             $code = $_POST["voting_code"];
+
+
         }
 
         if (trim(empty($_POST["candidate_one"]))) {
@@ -174,9 +190,13 @@
             <label>Candidate 3</label>
             <input type="text" name="candidate_three" class="form-control" value="<?php echo $c3; ?>">
             <span class="help-block"><?php echo $c3_err; ?></span>
-            By voting, you agree to the <a href="rules.php">Nerds United Election Rules.</a></br>
         </div>
-
+        By voting, you agree to the <a href="https://artofproblemsolving.com/community/c402403h1376236_rules_of_nerds_united">Nerds United Election Rules.</a></br></br>
+        <input type="checkbox" required name="rule1" value="No" />I am using the voting code PMed to me by an admin/mod, and not any other voting code.</br>
+        <input type="checkbox" required name="rule2" value="No" />I may vote for myself.</br>
+        <input type="checkbox" required name="rule3" value="No" />I may not put the same user in multiple choice spots.</br>
+        <input type="checkbox" required name="rule4" value="No" />I may not change my vote after I have voted .</br>
+        <input type="checkbox" required name="rule5" value="No" />If I misclick, I may report voting errors in the voting errors thread in NU, after which my code will be reset</br></br>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Vote">
         </div>

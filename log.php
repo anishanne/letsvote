@@ -1,15 +1,17 @@
 <?php
 require_once "mysql_config.php";
 
-$result = mysqli_query($db, "SELECT * FROM candidates");
+$result = mysqli_query($db, "SELECT * FROM log");
 
 echo "<table border='1'>
 <tr>
-<th>Users Nominated</th>
+<th>User</th>
+<th>Action</th>
 </tr>";
 while ($row = mysqli_fetch_array($result)) {
     echo "<tr>";
     echo "<td>" . $row['user'] . "</td>";
+    echo "<td>" . $row['action'] . "</td>";
     echo "</tr>";
 }
 echo "</table>";
@@ -35,6 +37,5 @@ mysqli_close($db);
 <div class="page-header">
 </div>
 <a href="/" class="btn btn-primary">Back to Home Page</a>
-<a href="vote.php" class="btn btn-primary">I'm ready to vote!</a>
 </body>
 </html>

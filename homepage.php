@@ -35,6 +35,11 @@ $db->close();
         <button type="submit">View Results</button>
     </div>
 </form>
+<form action="log.php">
+    <div class="container">
+        <button type="submit">Log</button>
+    </div>
+</form>
 <form action="home.php">
     <div class="container">
         <button type="submit">Admin Login</button>
