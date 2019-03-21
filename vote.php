@@ -48,7 +48,7 @@
     } else {
         echo "0 results";
     }
-    $db->close();
+    //$db->close();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($doVote == "yes") {
             if (empty(trim($_POST["voting_code"]))) {
