@@ -38,93 +38,109 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 db->close();*/
+$doVote = "yes";
+$sql = "SELECT * FROM votingActive WHERE 1";
+$result = $db->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $doVote = $row["text"];
+    }
+} else {
+    echo "0 results";
+}
+$db->close();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (trim(empty($_POST["voting_code"]))) {
-        $code_err = "Voting code must be provided";
-    } else {
-        $code = $_POST["voting_code"];
-    }
-    if (trim(empty($_POST["candidate_one"]))) {
-        $c1_err = "Candidate must be provided";
-    } else {
-        if (valid_candidate($_POST["candidate_one"])) {
-            $c1 = trim($_POST["candidate_one"]);
+    if ($doVote == "yes") {
+        if (trim(empty($_POST["voting_code"]))) {
+            $code_err = "Voting code must be provided";
         } else {
-            $c1_err = "Invalid candidate";
+            $code = $_POST["voting_code"];
         }
-    }
-    if (trim(empty($_POST["candidate_two"]))) {
-        $c2_err = "Candidate must be provided";
-    } else {
-        if (valid_candidate($_POST["candidate_two"])) {
-            $c2 = trim($_POST["candidate_two"]);
+        if (trim(empty($_POST["candidate_one"]))) {
+            $c1_err = "Candidate must be provided";
         } else {
-            $c2_err = "Invalid candidate";
+            if (valid_candidate($_POST["candidate_one"])) {
+                $c1 = trim($_POST["candidate_one"]);
+            } else {
+                $c1_err = "Invalid candidate";
+            }
         }
-    }
-    if (trim(empty($_POST["candidate_three"]))) {
-        $c3_err = "Candidate must be provided";
-    } else {
-        if (valid_candidate($_POST["candidate_three"])) {
-            $c3 = trim($_POST["candidate_three"]);
+        if (trim(empty($_POST["candidate_two"]))) {
+            $c2_err = "Candidate must be provided";
         } else {
-            $c3_err = "Invalid candidate";
+            if (valid_candidate($_POST["candidate_two"])) {
+                $c2 = trim($_POST["candidate_two"]);
+            } else {
+                $c2_err = "Invalid candidate";
+            }
         }
-    }
-    if (empty($code_err) && empty($c1_err) && empty($c2_err) && empty($c3_err)) {
-        $sql = "SELECT valid FROM vote_codes WHERE vote_code = ?";
-        if ($stmt = mysqli_prepare($db, $sql)) {
-            mysqli_stmt_bind_param($stmt, "s", $param_code);
-            $param_code = $code;
-            if (mysqli_stmt_execute($stmt)) {
-                mysqli_stmt_store_result($stmt);
-                if (mysqli_stmt_num_rows($stmt) == 1) {
-                    mysqli_stmt_bind_result($stmt, $valid);
-                    if (mysqli_stmt_fetch($stmt)) {
-                        if ($valid != true) {
-                            $code_err = "That code is not valid.";
+        if (trim(empty($_POST["candidate_three"]))) {
+            $c3_err = "Candidate must be provided";
+        } else {
+            if (valid_candidate($_POST["candidate_three"])) {
+                $c3 = trim($_POST["candidate_three"]);
+            } else {
+                $c3_err = "Invalid candidate";
+            }
+        }
+        if (empty($code_err) && empty($c1_err) && empty($c2_err) && empty($c3_err)) {
+            $sql = "SELECT valid FROM vote_codes WHERE vote_code = ?";
+            if ($stmt = mysqli_prepare($db, $sql)) {
+                mysqli_stmt_bind_param($stmt, "s", $param_code);
+                $param_code = $code;
+                if (mysqli_stmt_execute($stmt)) {
+                    mysqli_stmt_store_result($stmt);
+                    if (mysqli_stmt_num_rows($stmt) == 1) {
+                        mysqli_stmt_bind_result($stmt, $valid);
+                        if (mysqli_stmt_fetch($stmt)) {
+                            if ($valid != true) {
+                                $code_err = "That code is not valid.";
+                            }
                         }
+                    } else {
+                        $code_err = "That code does not exist.";
                     }
                 } else {
-                    $code_err = "That code does not exist.";
+                    echo "Something went wrong.";
                 }
-            } else {
-                echo "Something went wrong.";
             }
+            mysqli_stmt_close($stmt);
         }
-        mysqli_stmt_close($stmt);
-    }
-    if (empty($code_err) && empty($c1_err) && empty($c2_err) && empty($c3_err)) {
-        $sql = "INSERT INTO votes (vote_code, candidate_one, candidate_two, candidate_three) VALUES (?, ?, ?, ?)";
-        if ($stmt = mysqli_prepare($db, $sql)) {
-            mysqli_stmt_bind_param($stmt, "ssss", $param_vote_code, $param_c1, $param_c2, $param_c3);
-            $param_vote_code = $code;
-            $param_c1 = $c1;
-            $param_c2 = $c2;
-            $param_c3 = $c3;
-            if (!mysqli_stmt_execute($stmt)) {
-                echo "Something went wrong.";
-                exit;
+        if (empty($code_err) && empty($c1_err) && empty($c2_err) && empty($c3_err)) {
+            $sql = "INSERT INTO votes (vote_code, candidate_one, candidate_two, candidate_three) VALUES (?, ?, ?, ?)";
+            if ($stmt = mysqli_prepare($db, $sql)) {
+                mysqli_stmt_bind_param($stmt, "ssss", $param_vote_code, $param_c1, $param_c2, $param_c3);
+                $param_vote_code = $code;
+                $param_c1 = $c1;
+                $param_c2 = $c2;
+                $param_c3 = $c3;
+                if (!mysqli_stmt_execute($stmt)) {
+                    echo "Something went wrong.";
+                    exit;
+                }
             }
+            mysqli_stmt_close($stmt);
         }
-        mysqli_stmt_close($stmt);
-    }
-    if (empty($code_err) && empty($c1_err) && empty($c2_err) && empty($c3_err)) {
-        $sql = "UPDATE vote_codes SET valid = ? WHERE vote_code = ?";
-        if ($stmt = mysqli_prepare($db, $sql)) {
-            mysqli_stmt_bind_param($stmt, "is", $param_valid, $param_vote_code);
-            $param_valid = 0;
-            $param_vote_code = $code;
-            if (mysqli_stmt_execute($stmt)) {
-                header("location: congrats.php");
-                exit;
-            } else {
-                echo "Something went wrong.";
+        if (empty($code_err) && empty($c1_err) && empty($c2_err) && empty($c3_err)) {
+            $sql = "UPDATE vote_codes SET valid = ? WHERE vote_code = ?";
+            if ($stmt = mysqli_prepare($db, $sql)) {
+                mysqli_stmt_bind_param($stmt, "is", $param_valid, $param_vote_code);
+                $param_valid = 0;
+                $param_vote_code = $code;
+                if (mysqli_stmt_execute($stmt)) {
+                    header("location: congrats.php");
+                    exit;
+                } else {
+                    echo "Something went wrong.";
+                }
             }
+            mysqli_stmt_close($stmt);
         }
-        mysqli_stmt_close($stmt);
+        mysqli_close($db);
     }
-    mysqli_close($db);
+    else{
+        echo "Voting is closed";
+    }
 }
 ?>
 
