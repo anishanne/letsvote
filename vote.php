@@ -23,21 +23,7 @@
 
 <?php
     require "mysql_config.php";
-    /*$code = $c1 = $c2 = $c3 = "";
-    $code_err = $c1_err = $c2_err = $c3_err = "";
-    $sql = "SELECT * FROM votingActive WHERE 1"
-    $result = db->query($sql);
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            if ($row["text"] == "no"){
-                $code_err = "Voting code must be provided";
-            }
-        }
-    } else {
-        echo "0 results";
-    }
-    db->close();*/
+
     $doVote = "yes";
     $sql = "SELECT * FROM votingActive WHERE 1";
     $result = $db->query($sql);
@@ -48,7 +34,6 @@
     } else {
         echo "0 results";
     }
-    //$db->close();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($doVote == "yes") {
             if (empty(trim($_POST["voting_code"]))) {
