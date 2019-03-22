@@ -1,3 +1,21 @@
+<!--
+    letsvote - STV voting system
+    Copyright (C) 2019 anishanne
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <?php
     session_start();
 
@@ -32,7 +50,8 @@
     <a href="delete_code.php" class="btn btn-primary"> Disable a Code </a> This will deactivate a code.<br/><br/><br/>
     <a href="reset_code.php" class="btn btn-primary"> Reset a Code </a> This will allow the code to be used to vote
     again.<br/><br/><br/>
-    <a href="stop_voting.php" class="btn btn-primary"> Stop/Start Voting </a> This will stop/start voting.<br/><br/><br/>
+    <a href="stop_voting.php" class="btn btn-primary"> Stop/Start Voting </a> This will stop/start
+    voting.<br/><br/><br/>
     <a href="admin_results.php" class="btn btn-primary"> View Results </a> This will allow to view
     the results for the elction with the voting codes.<br/><br/><br/>
     <a href="nominate.php" class="btn btn-danger"> Nominate A Person </a> This will allow to nominate people for the
@@ -41,7 +60,8 @@
     nominations from the next election.<br/><br/><br/>
     <a href="current_nominations.php" class="btn btn-danger"> View Current Nominations </a> This will allow to view
     nominations for the next election.<br/><br/><br/>
-    <a href="front_text.php" class="btn btn-warning"> Change Front Page Text </a> This is to change the text on the front page.<br/><br/><br/>
+    <a href="front_text.php" class="btn btn-warning"> Change Front Page Text </a> This is to change the text on the
+    front page.<br/><br/><br/>
     <a href="reset_election.php" class="btn btn-warning"> Reset Election </a> WARNING: This command can not be reversed.<br/><br/><br/>
     <a href="reset_password.php" class="btn btn-warning"> Reset Your Password </a> This is to reset your
     password.<br/><br/><br/>
