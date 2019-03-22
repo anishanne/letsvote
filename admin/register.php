@@ -145,7 +145,7 @@
         <p>Already have an account? <a href="login.php">Login here</a>.</p>
     </form>
 </div>
-<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
+<a href="home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 </html>-->
 
