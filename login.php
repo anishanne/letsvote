@@ -51,12 +51,21 @@
                                 if ($stmt = mysqli_prepare($db, $sql)) {
                                     mysqli_stmt_bind_param($stmt, "ss", $p_user, $p_log);
                                     $p_user = $username;
+
                                     $p_log = "Logged in on " . date("Y/m/d") . " at " . date("h:i:s");
                                     if (!mysqli_stmt_execute($stmt)) {
                                         echo "oops: " . mysqli_stmt_error($stmt);
                                     }
 
                                 }
+
+
+                                //require_once "webhook.php";
+                               // $text = "This is a test messasge";//($username."Logged in on " . date("Y/m/d") . " at " . date("h:i:s"));
+                                //curl_setopt($curl, CURLOPT_POST, 1);
+                                //curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(array("content" => $text)));
+
+                                //echo  curl_exec($curl);
                                 header("location: home.php");
                             } else {
                                 $password_err = "The password you entered was not valid.";

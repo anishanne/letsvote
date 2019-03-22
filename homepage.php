@@ -18,6 +18,8 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 $db->close();
+
+
 ?>
 <center><h1> Welcome to NUVoting.</h1></center>
 <form action="vote.php">

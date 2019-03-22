@@ -50,6 +50,7 @@
 
         }
         mysqli_close($db);
+
     }
 ?>
 

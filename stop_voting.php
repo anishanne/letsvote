@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_bind_param($stmt, "ss", $p_user, $p_log);
 
         $p_user = $_SESSION["username"];
-        $p_log = "Set voting to ".$nominee . " at " . date("Y/m/d") . " at " . date("h:i:s");
+        $p_log = "Set voting to ".$voting . " at " . date("Y/m/d") . " at " . date("h:i:s");
 
         if (!mysqli_stmt_execute($stmt)) {
             echo "oops: " . mysqli_stmt_error($stmt);
