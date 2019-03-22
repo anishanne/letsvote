@@ -23,29 +23,22 @@
         header("location: home.php");
         exit;
     }
+    require_once "../system/mysql_config.php";
 
-    require_once "mysql_config.php";
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty(trim($_POST["code"]))) {
-            $code_err = "Please enter a code.";
-        } else {
-            $code = trim($_POST["code"]);
-        }
+    $result = mysqli_query($db, "SELECT * FROM candidates");
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $sql = "UPDATE frontPageText SET text=? WHERE 1";
-
-            if ($stmt = mysqli_prepare($db, $sql)) {
-                mysqli_stmt_bind_param($stmt, "s", $param_code);
-
-                $param_code = $code;
-
-                if (!mysqli_stmt_execute($stmt)) {
-                    echo "oops: " . mysqli_stmt_error($stmt);
-                }
-            }
-        }
+    echo "<table border='1'>
+<tr>
+<th>Users Nominated</th>
+</tr>";
+    while ($row = mysqli_fetch_array($result)) {
+        echo "<tr>";
+        echo "<td>" . $row['user'] . "</td>";
+        echo "</tr>";
     }
+    echo "</table>";
+
+    mysqli_close($db);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,23 +51,13 @@
         body {
             font: 14px sans-serif;
             text-align: center;
+
         }
     </style>
 </head>
 <body>
 <div class="page-header">
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="form-group <?php echo (!empty($code_err)) ? 'has-error' : ''; ?>">
-            <label>Change Front Page Text</label>
-            <input type="text" name="code" class="form-control">
-            <span class="help-block"><?php echo $code_err; ?></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Change front page text.">
-        </div>
-    </form>
 </div>
-<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
+<a href="home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 </html>
-

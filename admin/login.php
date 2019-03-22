@@ -24,7 +24,7 @@
         exit;
     }
 
-    require_once "mysql_config.php";
+    require_once "../system/mysql_config.php";
 
     $username = $password = "";
     $username_err = $password_err = "";

@@ -24,28 +24,45 @@
         exit;
     }
 
-    require_once "mysql_config.php";
+    require_once "../system/mysql_config.php";
+
+    $voting = $nominee_err = "";
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $sql = "TRUNCATE TABLE votes";
-        $db->query($sql);
-        $sql = "TRUNCATE TABLE candidates";
-        $db->query($sql);
-        $sql = "TRUNCATE TABLE vote_codes";
-        $db->query($sql);
+        if (empty(trim($_POST["voting"]))) {
+            $nominee_err = "Work with me here...";
+        } else {
+            $voting = trim($_POST["voting"]);
+        }
 
+        $sql = "UPDATE votingActive SET text=? WHERE 1";
 
-        $sql = "INSERT INTO log (user, action) VALUES (?,?)";
         if ($stmt = mysqli_prepare($db, $sql)) {
-            mysqli_stmt_bind_param($stmt, "ss", $p_user, $p_log);
-            $p_user = $_SESSION["username"];
-            $p_log = "Reset Election at " . date("Y/m/d") . " at " . date("h:i:s");
+            mysqli_stmt_bind_param($stmt, "s", $voting);
+
             if (!mysqli_stmt_execute($stmt)) {
                 echo "oops: " . mysqli_stmt_error($stmt);
             }
 
+            mysqli_stmt_close($stmt);
         }
-        mysqli_close($db);
 
+        $sql = "INSERT INTO log (user, action) VALUES (?,?)";
+
+        if ($stmt = mysqli_prepare($db, $sql)) {
+            mysqli_stmt_bind_param($stmt, "ss", $p_user, $p_log);
+
+            $p_user = $_SESSION["username"];
+            $p_log = "Set voting to " . $voting . " at " . date("Y/m/d") . " at " . date("h:i:s");
+
+            if (!mysqli_stmt_execute($stmt)) {
+                echo "oops: " . mysqli_stmt_error($stmt);
+            }
+
+            mysqli_stmt_close($stmt);
+        }
+
+        mysqli_close($db);
     }
 ?>
 
@@ -54,7 +71,7 @@
 <body background="background.jpeg">
 <head>
     <meta charset="UTF-8">
-    <title>Reset Election</title>
+    <title>Welcome</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         body {
@@ -67,10 +84,17 @@
 <div class="page-header">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="I Am Sure I Want To Reset The Election">
+            <input type="hidden" name="voting" value="yes">
+            <input type="submit" class="btn btn-primary" value="Start Voting">
+        </div>
+    </form>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <div class="form-group">
+            <input type="hidden" name="voting" value="no">
+            <input type="submit" class="btn btn-primary" value="Stop Voting">
         </div>
     </form>
 </div>
-<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
+<a href="/admin/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 </html>

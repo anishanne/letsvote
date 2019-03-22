@@ -28,7 +28,7 @@
 
 <body>
 <?php
-    require_once "mysql_config.php";
+    require_once "system/mysql_config.php";
 
     $result = mysqli_query($db, "SELECT * FROM votes");
 

@@ -24,45 +24,40 @@
         exit;
     }
 
-    require_once "mysql_config.php";
-
-    $voting = $nominee_err = "";
-
+    require_once "../system/mysql_config.php";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty(trim($_POST["voting"]))) {
-            $nominee_err = "Work with me here...";
+        if (empty(trim($_POST["code"]))) {
+            $code_err = "Please enter a code.";
         } else {
-            $voting = trim($_POST["voting"]);
+            $code = trim($_POST["code"]);
         }
 
-        $sql = "UPDATE votingActive SET text=? WHERE 1";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $sql = "DELETE FROM candidates WHERE user = ?";
 
-        if ($stmt = mysqli_prepare($db, $sql)) {
-            mysqli_stmt_bind_param($stmt, "s", $voting);
+            if ($stmt = mysqli_prepare($db, $sql)) {
+                mysqli_stmt_bind_param($stmt, "s", $param_code);
 
-            if (!mysqli_stmt_execute($stmt)) {
-                echo "oops: " . mysqli_stmt_error($stmt);
+                $param_code = $code;
+
+                if (!mysqli_stmt_execute($stmt)) {
+                    echo "oops: " . mysqli_stmt_error($stmt);
+                }
             }
 
             mysqli_stmt_close($stmt);
-        }
+            $sql = "INSERT INTO log (user, action) VALUES (?,?)";
+            if ($stmt = mysqli_prepare($db, $sql)) {
+                mysqli_stmt_bind_param($stmt, "ss", $p_user, $p_log);
+                $p_user = $_SESSION["username"];
+                $p_log = "Removed nomination for " . $code . " at " . date("Y/m/d") . " at " . date("h:i:s");
+                if (!mysqli_stmt_execute($stmt)) {
+                    echo "oops: " . mysqli_stmt_error($stmt);
+                }
 
-        $sql = "INSERT INTO log (user, action) VALUES (?,?)";
-
-        if ($stmt = mysqli_prepare($db, $sql)) {
-            mysqli_stmt_bind_param($stmt, "ss", $p_user, $p_log);
-
-            $p_user = $_SESSION["username"];
-            $p_log = "Set voting to " . $voting . " at " . date("Y/m/d") . " at " . date("h:i:s");
-
-            if (!mysqli_stmt_execute($stmt)) {
-                echo "oops: " . mysqli_stmt_error($stmt);
             }
-
-            mysqli_stmt_close($stmt);
+            mysqli_close($db);
         }
-
-        mysqli_close($db);
     }
 ?>
 
@@ -83,18 +78,16 @@
 <body>
 <div class="page-header">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="form-group">
-            <input type="hidden" name="voting" value="yes">
-            <input type="submit" class="btn btn-primary" value="Start Voting">
+        <div class="form-group <?php echo (!empty($code_err)) ? 'has-error' : ''; ?>">
+            <label>User</label>
+            <input type="text" name="code" class="form-control">
+            <span class="help-block"><?php echo $code_err; ?></span>
         </div>
-    </form>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group">
-            <input type="hidden" name="voting" value="no">
-            <input type="submit" class="btn btn-primary" value="Stop Voting">
+            <input type="submit" class="btn btn-primary" value="Remove Nomination">
         </div>
     </form>
 </div>
-<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
+<a href="/admin/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 </html>

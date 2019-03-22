@@ -17,8 +17,6 @@
 -->
 
 <?php
-    require_once "mysql_config.php";
-
     $result = mysqli_query($db, "SELECT * FROM candidates");
 
     echo "<table border='1'>

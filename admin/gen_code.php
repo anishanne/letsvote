@@ -17,6 +17,20 @@
 -->
 
 <?php
+    function random_str()
+    {
+        $keyspace = 'abcdefghijklmnopqrstuvwxyz';
+        $pieces = [];
+        $max = mb_strlen($keyspace, '8bit') - 1;
+        for ($i = 0; $i < 32; ++$i) {
+            $pieces [] = $keyspace[random_int(0, $max)];
+        }
+        return implode('', $pieces);
+    }
+
+?>
+
+<?php
     session_start();
 
     if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
@@ -24,57 +38,42 @@
         exit;
     }
 
-    require_once "mysql_config.php";
+    require_once "../system/mysql_config.php";
 
-    $code = $code_err = "";
-    $id = -1;
+    $code = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty(trim($_POST["code"]))) {
-            $code_err = "Please enter a code.";
-        } else {
-            $code = trim($_POST["code"]);
-        }
+        $sql = "INSERT INTO vote_codes (vote_code, valid) VALUES (?, 1)";
 
-        if (empty($code_err)) {
-            $sql = "DELETE FROM votes WHERE vote_code = ?";
-            if ($stmt = mysqli_prepare($db, $sql)) {
-                mysqli_stmt_bind_param($stmt, "s", $ccode);
-                $ccode = $code;
-                if (!mysqli_stmt_execute($stmt)) {
-                    echo "oops: " . mysqli_stmt_error($stmt);
-                }
+        if ($stmt = mysqli_prepare($db, $sql)) {
+            mysqli_stmt_bind_param($stmt, "s", $param_code);
+
+            $code = random_str();
+            $param_code = $code;
+
+            if (!mysqli_stmt_execute($stmt)) {
+                echo "oops: " . mysqli_stmt_error($stmt);
             }
         }
 
-        if (empty($code_err)) {
-            $sql = "UPDATE vote_codes SET valid = 1 WHERE vote_code = ?";
-            if ($stmt = mysqli_prepare($db, $sql)) {
-                mysqli_stmt_bind_param($stmt, "s", $ccode);
-                $ccode = $code;
-                if (!mysqli_stmt_execute($stmt)) {
-                    echo "oops: " . mysqli_stmt_error($stmt);
-                }
-            }
-        }
+        mysqli_stmt_close($stmt);
         $sql = "INSERT INTO log (user, action) VALUES (?,?)";
         if ($stmt = mysqli_prepare($db, $sql)) {
             mysqli_stmt_bind_param($stmt, "ss", $p_user, $p_log);
             $p_user = $_SESSION["username"];
-            $p_log = "Reset code that started with " . mb_substr($code, 0, -29) . " at " . date("Y/m/d") . " at " . date("h:i:s");
+            $p_log = "Generated code that started with " . mb_substr($code, 0, -29) . " at " . date("Y/m/d") . " at " . date("h:i:s");
             if (!mysqli_stmt_execute($stmt)) {
                 echo "oops: " . mysqli_stmt_error($stmt);
             }
 
         }
         mysqli_close($db);
-    }
 
+    }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<body background="background.jpeg">
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
@@ -89,16 +88,14 @@
 <body>
 <div class="page-header">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="form-group <?php echo (!empty($code_err)) ? 'has-error' : ''; ?>">
-            <label>Code</label>
-            <input type="text" name="code" class="form-control">
-            <span class="help-block"><?php echo $code_err; ?></span>
+        <div class="form-group">
+            <label><?php echo "Code: " . $code; ?></label>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Reset code">
+            <input type="submit" class="btn btn-primary" value="Generate code">
         </div>
     </form>
 </div>
-<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
+<a href="/admin/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 </html>

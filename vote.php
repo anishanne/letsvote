@@ -19,7 +19,7 @@
 <?php
     function valid_candidate($username)
     {
-        require_once "mysql_config.php";
+        require_once "system/mysql_config.php";
         global $db;
         $sql = "SELECT * FROM candidates WHERE user = ?";
         if ($stmt = mysqli_prepare($db, $sql)) {
@@ -40,7 +40,7 @@
 ?>
 
 <?php
-    require "mysql_config.php";
+    require "system/mysql_config.php";
 
     $doVote = "yes";
     $sql = "SELECT * FROM votingActive WHERE 1";

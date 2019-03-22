@@ -19,6 +19,8 @@
 <?php
     session_start();
 
+    require_once "../system/mysql_config.php";
+
     $_SESSION = array();
 
     session_destroy();

@@ -24,7 +24,7 @@
         exit;
     }
 
-    require_once "mysql_config.php";
+    require_once "../system/mysql_config.php";
 
     $new_password = $confirm_password = "";
     $new_password_err = $confirm_password_err = "";
@@ -121,6 +121,6 @@
         </div>
     </form>
 </div>
-<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
+<a href="/admin/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 </html>

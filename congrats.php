@@ -25,7 +25,7 @@
 </head>
 <center><h1> Welcome to NUVoting.</h1></center>
 
-<h3>Your vote has been recorded.</h3>.</h3>
+<h3>Your vote has been recorded.</h3>
 
 <form action="/results.php">
     <div class="container">

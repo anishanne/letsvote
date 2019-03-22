@@ -17,8 +17,6 @@
 -->
 
 <!--<?php/*
-    require_once "mysql_config.php";
-
     $username = $password = $confirm_password = "";
     $username_err = $password_err = $confirm_password_err = "";
 

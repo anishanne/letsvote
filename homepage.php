@@ -24,7 +24,7 @@
     <title>Let's Vote</title>
 </head>
 <?php
-    require_once "mysql_config.php";
+    require_once "system/mysql_config.php";
     $sql = "SELECT * FROM frontPageText WHERE 1";
     $result = $db->query($sql);
     if ($result->num_rows > 0) {
@@ -55,12 +55,12 @@
         <button type="submit">View Results</button>
     </div>
 </form>
-<form action="log.php">
+<form action="system/log.php">
     <div class="container">
         <button type="submit">Log</button>
     </div>
 </form>
-<form action="home.php">
+<form action="admin/home.php">
     <div class="container">
         <button type="submit">Admin Login</button>
     </div>
