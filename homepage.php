@@ -39,7 +39,7 @@
 
 
 ?>
-<center><h1> Welcome to NUVoting.</h1></center>
+<center><h1> Welcome to Let's Vote Voting.</h1></center>
 <form action="vote.php">
     <div class="container">
         <button type="submit">Let's Vote</button>
