@@ -1,7 +1,7 @@
-#Let's Vote
+#Let's Vote#
 
 ##What's Coming Soon?
-Single Transferable Vote Counter Built In
+Single Transferable Vote Counter Built In <br />
 Discord Webhook Log
 
 ##What's New?
