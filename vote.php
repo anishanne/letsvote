@@ -185,14 +185,12 @@
         By voting, you agree to the <a
                 href="https://artofproblemsolving.com/community/c402403h1376236_rules_of_nerds_united">Nerds United
             Election Rules.</a></br></br>
-        <input type="checkbox" required name="rule1" value="No"/>I am using the voting code PMed to me by an admin/mod,
+        <input type="checkbox" required name="rule1" value="No"/>I am using the voting code give to me.
         and not any other voting code.</br>
         <input type="checkbox" required name="rule2" value="No"/>I may vote for myself.</br>
         <input type="checkbox" required name="rule3" value="No"/>I may not put the same user in multiple choice
         spots.</br>
-        <input type="checkbox" required name="rule4" value="No"/>I may not change my vote after I have voted .</br>
-        <input type="checkbox" required name="rule5" value="No"/>If I misclick, I may report voting errors in the voting
-        errors thread in NU, after which my code will be reset</br></br>
+        <input type="checkbox" required name="rule4" value="No"/>I may not change my vote after I have voted .</br></br>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Vote">
         </div>
