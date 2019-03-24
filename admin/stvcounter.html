@@ -37,6 +37,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 <body ng-app="core" ng-controller="mainController as ctrl" class="row column">
 
 <h1>Single Transferable Vote Counter</h1>
+Ballots should be entered 1 candidate per line, empty line between votes.
 <hr />
 
 <div class="row">
@@ -97,7 +98,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 </div>
 <a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 <br>
-<a href="/countSTV.php" class="btn btn-primary">Find What to Input Here</a>
+<a href="/method1.php" class="btn btn-primary">Find What to Input Here</a>
 <br><br><br>
 <a href = https://github.com/zhantongz/stvCount/blob/master/LICENSE>MIT License - &copy2016 zhantongz
 </body>
