@@ -1,25 +1,7 @@
-<!--
-    letsvote - STV voting system
-    Copyright (C) 2019 anishanne
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
--->
-
 <?php
     function valid_candidate($username)
     {
-        require_once "system/mysql_config.php";
+        require_once "mysql_config.php";
         global $db;
         $sql = "SELECT * FROM candidates WHERE user = ?";
         if ($stmt = mysqli_prepare($db, $sql)) {
@@ -40,8 +22,22 @@
 ?>
 
 <?php
-    require "system/mysql_config.php";
-
+    require "mysql_config.php";
+    /*$code = $c1 = $c2 = $c3 = "";
+    $code_err = $c1_err = $c2_err = $c3_err = "";
+    $sql = "SELECT * FROM votingActive WHERE 1"
+    $result = db->query($sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            if ($row["text"] == "no"){
+                $code_err = "Voting code must be provided";
+            }
+        }
+    } else {
+        echo "0 results";
+    }
+    db->close();*/
     $doVote = "yes";
     $sql = "SELECT * FROM votingActive WHERE 1";
     $result = $db->query($sql);
@@ -52,6 +48,7 @@
     } else {
         echo "0 results";
     }
+    //$db->close();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($doVote == "yes") {
             if (empty(trim($_POST["voting_code"]))) {
@@ -185,12 +182,14 @@
         By voting, you agree to the <a
                 href="https://artofproblemsolving.com/community/c402403h1376236_rules_of_nerds_united">Nerds United
             Election Rules.</a></br></br>
-        <input type="checkbox" required name="rule1" value="No"/>I am using the voting code give to me.
+        <input type="checkbox" required name="rule1" value="No"/>I am using the voting code PMed to me by an admin/mod,
         and not any other voting code.</br>
         <input type="checkbox" required name="rule2" value="No"/>I may vote for myself.</br>
         <input type="checkbox" required name="rule3" value="No"/>I may not put the same user in multiple choice
         spots.</br>
-        <input type="checkbox" required name="rule4" value="No"/>I may not change my vote after I have voted .</br></br>
+        <input type="checkbox" required name="rule4" value="No"/>I may not change my vote after I have voted .</br>
+        <input type="checkbox" required name="rule5" value="No"/>If I misclick, I may report voting errors in the voting
+        errors thread in NU, after which my code will be reset</br></br>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Vote">
         </div>

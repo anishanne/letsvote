@@ -1,0 +1,104 @@
+<!--MIT License
+
+Copyright (c) 2016 Foshkey
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.-->
+<?php
+session_start();
+
+if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
+    header("location: home.php");
+    exit;
+}?>
+<html>
+<head>
+    <title>STV Counter</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="stvCounter.js"></script>
+    <script src="core.js"></script>
+</head>
+<body ng-app="core" ng-controller="mainController as ctrl" class="row column">
+
+<h1>Single Transferable Vote Counter</h1>
+<hr />
+
+<div class="row">
+    <form name="ctrl.ballotForm" class="medium-8 columns" ng-submit="ctrl.countVotes()">
+        <h4>Ballot Input</h4>
+        <textarea ng-model="ctrl.ballotForm.text" rows="12" required></textarea>
+        <label>
+            How many seats need to be filled?
+            <input type="number" ng-model="ctrl.ballotForm.seats" required />
+        </label>
+        <input type="submit" class="large hollow button" value="Count Votes" />
+    </form>
+
+
+</div>
+
+<div class="callout success" ng-show="ctrl.elected.length > 0 || ctrl.tie">
+    <h3>Elected</h3>
+    <h6>Seats - {{ctrl.seats}}</h6>
+    <strong ng-show="ctrl.tie" style="color: red;">There was a tie. View the rounds for more details.</strong>
+    <div class="callout" ng-show="ctrl.elected.length > 0">
+        <h5 ng-repeat="elected in ctrl.elected track by $index">{{elected}}</h5>
+    </div>
+</div>
+
+<div class="primary callout" ng-show="ctrl.rounds.length > 0">
+    <h3>Rounds</h3>
+    <h6>Quota - {{ctrl.quota}}<h6>
+        <div class="row small-up-1 medium-up-2 large-up-3">
+            <div class="columns" ng-repeat="round in ctrl.rounds track by $index">
+                <div class="callout">
+                    <h5>Round {{$index + 1}}</h5>
+                    <div class="row" ng-repeat="(candidate, value) in round">
+                        <div class="small-5 columns">{{candidate}}</div>
+                        <div class="small-2 columns">{{value.votes | number}}</div>
+                        <div class="small-5 columns">
+                            <strong ng-show="value.eliminated" style="color: red;">Eliminated</strong>
+                            <strong ng-show="value.elected" style="color: green;">Elected</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="primary callout" ng-show="ctrl.ballots.length > 0">
+    <h3>Ballots</h3>
+    <h6>Votes Cast - {{ctrl.ballots.length}}<h6>
+        <div class="row small-up-2 medium-up-4 large-up-6">
+            <div class="columns" ng-repeat="ballot in ctrl.ballots track by $index">
+                <div class="callout">
+                    <div ng-repeat="candidate in ballot track by $index">
+                        {{$index + 1}} - {{candidate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
+<br>
+<a href="/countSTV.php" class="btn btn-primary">Find What to Input Here</a>
+<br><br><br>
+<a href = https://github.com/zhantongz/stvCount/blob/master/LICENSE>MIT License - &copy2016 zhantongz
+</body>
+</html>
