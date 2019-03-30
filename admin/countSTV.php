@@ -13,29 +13,22 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
     <!--<link rel="stylesheet" type="text/css" href="vote.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <title>Vote</title>
+
+    <style type="text/css">
+        body{
+            background-size: cover !important;
+            color: white
+        }
+    </style>
 </head>
 <h1>STV Counter</h1>
 <br>
-<b>Please copy all the text below and input into form on next page.</b><br><br>
-<body>
-<?php
-require_once "mysql_config.php";
-
-$result = mysqli_query($db, "SELECT * FROM votes");
-
-$list1 = "";
-
-while ($row = mysqli_fetch_array($result)) {
-    echo strtolower(nl2br($row['candidate_one']." \r\n "));
-    echo strtolower(nl2br($row['candidate_two']."\r\n "));
-    echo strtolower(nl2br($row['candidate_three']." \r\n \r\n "));
-}
-$list = strtolower($list1);
-echo $list;
-
-mysqli_close($db);
-?>
-<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>   <a href="/stvcounter.html" class="btn btn-primary">To STV Counter</a>
+<a href="/method1.php" class="btn btn-primary">Method 1</a> 1 candidate per line, empty line between votes. This method has an automated  counter built in.<br><br>
+<a href="/method2.php" class="btn btn-primary">Method 2</a> 1 vote per line, candidates separated by commas.<br><br>
+<a href="/method3.php" class="btn btn-primary">Method 3 - Not Working Right Now</a> CSV File, 1 vote per line, 1 candidate per column. No Voting Codes. <br><br>
+<br>
+<br>
+<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 
 </html>

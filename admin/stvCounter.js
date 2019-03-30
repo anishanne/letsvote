@@ -33,7 +33,7 @@
                 });
 
                 // Droop method
-                srvc.quota = Math.floor(ballots.length / (seats + 1) + 1);
+                srvc.quota = ballots.length / (seats + 1) ;
 
                 var candidates = getCandidates(ballots);
                 var elected = [];

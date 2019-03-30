@@ -150,9 +150,15 @@
     <!--<link rel="stylesheet" type="text/css" href="vote.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <title>Vote</title>
+    <style type="text/css">
+        body{
+            background-size: cover !important;
+            color: white
+        }
+    </style>
 </head>
 
-<body>
+<body background="background.jpeg">
 
 <h2>Vote Form</h2>
 

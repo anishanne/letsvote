@@ -13,9 +13,16 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
     <!--<link rel="stylesheet" type="text/css" href="vote.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <title>Vote</title>
+    <style type="text/css">
+        body{
+            background-size: cover !important;
+            color: white
+        }
+    </style>
 </head>
 <h1>Method 1</h1>
 Copy everything below and go the the STV Counter.
+<br>
 <body>
 <?php
 require_once "mysql_config.php";

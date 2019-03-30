@@ -58,6 +58,7 @@
                                     }
 
                                 }
+                                header("Refresh:0");
 
 
                             } else {
@@ -95,6 +96,12 @@
         .wrapper {
             width: 350px;
             padding: 20px;
+        }
+    </style>
+    <style type="text/css">
+        body{
+            background-size: cover !important;
+            color: white
         }
     </style>
 </head>

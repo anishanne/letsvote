@@ -13,6 +13,12 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
     <!--<link rel="stylesheet" type="text/css" href="vote.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <title>Vote</title>
+    <style type="text/css">
+        body{
+            background-size: cover !important;
+            color: white
+        }
+    </style>
 </head>
 <h1>Method 2</h1>
 <body>
