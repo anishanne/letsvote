@@ -6,10 +6,12 @@
 
 ## What's New?
 ### Update 2.2.0
-* Background Change
-*  Text Color Change
 * Admin Dashboard Redesign
 * Main Page Redesign
+
+### Update 2.1.0
+* Background Change
+* Text Color Change
 
 ### Update 2.0.0
 * **Built in STV counter. More information can be found on the [STV page in the wiki](https://github.com/anishanne/letsvote/wiki/Single-Transferable-Voting)  NEW!**
