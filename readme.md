@@ -6,10 +6,10 @@
 
 ## What's New?
 ### Update 2.2.0
-*Background Change
-*Text Color Change
-*Admin Dashboard Redesign
-*Main Page Redesign
+* Background Change
+*  Text Color Change
+* Admin Dashboard Redesign
+* Main Page Redesign
 #### Admin Features
 * Built in STV counter. More information can be found on the [STV page in the wiki](https://github.com/anishanne/letsvote/wiki/Single-Transferable-Voting) 
 * Generate Codes - Generates a code for you.
