@@ -5,9 +5,9 @@
 * List of working web hosters.
 
 ## What's New?
-### Update 2.3.0
-* Admin Dashboard Color Change
-* Main Page Color Change
+### Update 2.2.1
+* Minor bug fixes.
+* Fixed a login reload problem.
 
 ### Update 2.2.0
 * Admin Dashboard Redesign
