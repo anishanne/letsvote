@@ -1,7 +1,7 @@
 # Let's Vote
 
 ## What's Coming Soon?
-* Single Transferable Vote Counter Built In <br />
+* Color changes for better look. <br />
 * Discord Webhook Log<br />
 
 ## What's New?
