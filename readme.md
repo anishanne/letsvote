@@ -1,10 +1,14 @@
 # Let's Vote
 
 ## What's Coming Soon?
-* Color changes for better look. <br />
 * Discord Webhook Log<br />
+* List of working web hosters.
 
 ## What's New?
+### Update 2.3.0
+* Admin Dashboard Color Change
+* Main Page Color Change
+
 ### Update 2.2.0
 * Admin Dashboard Redesign
 * Main Page Redesign
