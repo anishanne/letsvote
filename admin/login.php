@@ -58,7 +58,7 @@
                                     }
 
                                 }
-                                header("Refresh:0");
+                                header("location: home.php");
 
 
                             } else {
