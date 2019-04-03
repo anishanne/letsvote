@@ -7,7 +7,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 }?>
 <!DOCTYPE html>
 <html lang="en">
-<body background="background.jpeg">
+<body>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<link rel="stylesheet" type="text/css" href="vote.css">-->
@@ -16,7 +16,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
     <style type="text/css">
         body{
             background-size: cover !important;
-            color: white
+            color: black
         }
     </style>
 </head>
