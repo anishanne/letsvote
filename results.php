@@ -38,7 +38,8 @@
 
     mysqli_close($db);
 ?>
-<a href="/" class="btn btn-primary">Back to Home Page</a>
+<a href="/" class="btn btn-primary">Back to Home Page</a>  <a href="/calcResults.php" class="btn btn-primary">
+    Tabulate Results</a>
 </body>
 
 </html>
