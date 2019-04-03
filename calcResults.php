@@ -1,10 +1,4 @@
-<?php
-session_start();
 
-if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
-    header("location: home.php");
-    exit;
-}?>
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -41,4 +35,4 @@ echo $list;
 
 mysqli_close($db);
 ?>
-<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>   <a href="/stvcounter.html" class="btn btn-primary">To STV Counter</a>
+<a href="/homepage.php" class="btn btn-primary">Back to Home Page</a>   <a href="/public_stvcounter.html" class="btn btn-primary">To STV Counter</a>

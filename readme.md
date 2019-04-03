@@ -5,6 +5,9 @@
 * List of working web hosters.
 
 ## What's New?
+### Update 2.3.0
+* Removed background on vote counting pages to make it easier to copy and paste.
+* Added feature so users can calculate results.
 ### Update 2.2.1
 * Minor bug fixes.
 * Fixed a login reload problem.
@@ -18,10 +21,10 @@
 * Text Color Change
 
 ### Update 2.0.0
-* **Built in STV counter. More information can be found on the [STV page in the wiki](https://github.com/anishanne/letsvote/wiki/Single-Transferable-Voting)  NEW!**
+* Built in STV counter. More information can be found on the [STV page in the wiki](https://github.com/anishanne/letsvote/wiki/Single-Transferable-Voting)  
 
 ### Update 2.0.0 - Beta
-* **Built in STV counter. More information can be found on the [STV page in the wiki](https://github.com/anishanne/letsvote/wiki/Single-Transferable-Voting)  NEW! - Still in Beta**
+* Built in STV counter. More information can be found on the [STV page in the wiki](https://github.com/anishanne/letsvote/wiki/Single-Transferable-Voting) - Still in Beta
 
 ### Update 1.0.0
 #### Admin Features
