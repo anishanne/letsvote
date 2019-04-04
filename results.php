@@ -16,6 +16,20 @@
 
 <body>
 <?php
+require_once "mysql_config.php";
+$sql = "SELECT * FROM resultsPageText WHERE 1";
+$result = $db->query($sql);
+if ($result->num_rows > 0) {
+    // output data of each row1
+    while($row = $result->fetch_assoc()) {
+        echo $row["text"];
+    }
+} else {
+    echo "0 results";
+}
+
+?>
+<?php
     require_once "mysql_config.php";
 
     $result = mysqli_query($db, "SELECT * FROM votes");
