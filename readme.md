@@ -6,7 +6,7 @@
 
 ## What's New?
 ### Update 2.4.0
-* Minotr bug fixes with login page.
+* Minor bug fixes with login page.
 * Added feature so admins can put some text on the results page.
 
 ### Update 2.3.0
