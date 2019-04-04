@@ -5,9 +5,14 @@
 * List of working web hosters.
 
 ## What's New?
+### Update 2.4.0
+* Minotr bug fixes with login page.
+* Added feature so admins can put some text on the results page.
+
 ### Update 2.3.0
 * Removed background on vote counting pages to make it easier to copy and paste.
 * Added feature so users can calculate results.
+
 ### Update 2.2.1
 * Minor bug fixes.
 * Fixed a login reload problem.
