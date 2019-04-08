@@ -1,5 +1,6 @@
 # Let's Vote
-
+## What?
+LetsVote is a freen and opensource software that allows you to have an election. LetsVote gives you the ability for the users to see the results as they come in and gives you the ability to cancel votes. All with the simple click of a button. 
 ## What's Coming Soon?
 * Discord Webhook Log<br />
 * List of working web hosters.
