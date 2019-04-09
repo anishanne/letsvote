@@ -1,4 +1,10 @@
 # Let's Vote
+LetsVote is a free and opensource software that allows you to have an election. LetsVote gives you the ability to controll your entire elections and allows users to get their vote in easily stress free. 
+
+Here's how LetsVote works. A user registers for you election. An admin will then assign the user a voting code. The user will then vote with that voting code and the voting code becomes invalid. If the user messed up ihs/her vote. Reset the vote. If the users vote needs to be removed, you can do that too. So what are you waiting for?
+
+Get started by checking out the [FAQ and Setup](https://github.com/anishanne/letsvote/wiki) page on our wiki.
+
 
 ## What's Coming Soon?
 * Discord Webhook Log<br />
