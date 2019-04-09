@@ -207,7 +207,7 @@
         <input type="submit" class="btn btn-primary" value="Back">
     </form>-->
     <div style="margin: 0 35%;" class="buttonLink">
-        <a href="/public_nominations.php" style="color:white; text-decoration:none;">Current Nominations</a>
+        <a href="public_nominations.php" style="color:white; text-decoration:none;">Current Nominations</a>
     </div>
 </div>
 </body>

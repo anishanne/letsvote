@@ -35,4 +35,4 @@ echo $list;
 
 mysqli_close($db);
 ?>
-<a href="/homepage.php" class="btn btn-primary">Back to Home Page</a>   <a href="/public_stvcounter.html" class="btn btn-primary">To STV Counter</a>
+<a href="homepage.php" class="btn btn-primary">Back to Home Page</a>   <a href="/public_stvcounter.html" class="btn btn-primary">To STV Counter</a>

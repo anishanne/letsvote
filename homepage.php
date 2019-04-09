@@ -38,13 +38,13 @@
 <br>
 <font size="+2">
 <form action="home.php">
-    <div style="text-align: center; margin: 0 25%;"><a class="buttonLink" href="/vote.php" style="color:white; background-color: #002C73;">Let's Vote</a></div>
+    <div style="text-align: center; margin: 0 25%;"><a class="buttonLink" href="vote.php" style="color:white; background-color: #002C73;">Let's Vote</a></div>
     <br>
     <br>
-    <div style="text-align: center;"><a class="buttonLink2" href="/public_nominations.php">Current Nominations</a> <a class="buttonLink2" href="/results.php">View the Results</a></div>
+    <div style="text-align: center;"><a class="buttonLink2" href="public_nominations.php">Current Nominations</a> <a class="buttonLink2" href="results.php">View the Results</a></div>
     <br>
     <br>
-    <div style="text-align: center; margin: 0 25%;"><a class="buttonLink" href="/log.php">View the Action Log</a></div>
+    <div style="text-align: center; margin: 0 25%;"><a class="buttonLink" href="log.php">View the Action Log</a></div>
 </form>
 </font>
 </html>

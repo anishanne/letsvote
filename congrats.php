@@ -14,7 +14,7 @@
 
 <h3>Your vote has been recorded.</h3>.</h3>
 
-<form action="/results.php">
+<form action="results.php">
     <div class="container">
         <button type="submit">View Results</button>
     </div>

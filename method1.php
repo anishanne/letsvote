@@ -41,4 +41,4 @@ echo $list;
 
 mysqli_close($db);
 ?>
-<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>   <a href="/stvcounter.html" class="btn btn-primary">To STV Counter</a>
+<a href="home.php" class="btn btn-primary">Back to Admin Dashboard</a>   <a href="stvcounter.html" class="btn btn-primary">To STV Counter</a>

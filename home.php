@@ -35,17 +35,17 @@
     </div>
 </center>
 <form action="logout.php">
-    <div style="text-align: center;"><a class="buttonLink3" href="/gen_code.php">Generate Code</a> <a class="buttonLink3" href="/delete_code.php">Delete Code</a> <a class="buttonLink3" href="/reset_code.php">Reset A Code</a></div>
+    <div style="text-align: center;"><a class="buttonLink3" href="gen_code.php">Generate Code</a> <a class="buttonLink3" href="delete_code.php">Delete Code</a> <a class="buttonLink3" href="/reset_code.php">Reset A Code</a></div>
     <br>
-    <div style="text-align: center;"><a class="buttonLink3" href="/nominate.php">Nominate A Person</a> <a class="buttonLink3" href="/delete_nomination.php">Delete A Nomination</a> <a class="buttonLink3" href="/current_nominations.php">View Current Nominations</a></div>
+    <div style="text-align: center;"><a class="buttonLink3" href="nominate.php">Nominate A Person</a> <a class="buttonLink3" href="delete_nomination.php">Delete A Nomination</a> <a class="buttonLink3" href="/current_nominations.php">View Current Nominations</a></div>
     <br><br>
-    <div style="text-align: center;"><a class="buttonLink2" href="/admin_results.php">View Results</a> <a class="buttonLink2" href="/countSTV.php">Tabulate Results</a></div>
+    <div style="text-align: center;"><a class="buttonLink2" href="admin_results.php">View Results</a> <a class="buttonLink2" href="countSTV.php">Tabulate Results</a></div>
     <br>
-    <div style="text-align: center;"><a class="buttonLink2" href="/stop_voting.php">Stop/Start Voting</a> <a class="buttonLink2" href="/reset_election.php">Reset Election</a></div>
+    <div style="text-align: center;"><a class="buttonLink2" href="stop_voting.php">Stop/Start Voting</a> <a class="buttonLink2" href="reset_election.php">Reset Election</a></div>
     <br>
-    <div style="text-align: center;"><a class="buttonLink2" href="/front_text.php">Change Front Page Text</a> <a class="buttonLink2" href="/changeResultsText.php">Change Results Page Text</a></div>
+    <div style="text-align: center;"><a class="buttonLink2" href="front_text.php">Change Front Page Text</a> <a class="buttonLink2" href="changeResultsText.php">Change Results Page Text</a></div>
     <br>
-    <div style="text-align: center;"><a class="buttonLink3" href="/homepage.php">Go To Home Page</a> <a class="buttonLink3" href="/logout.php">Logout</a> <a class="buttonLink3" href="/reset_password.php">Reset Your Password</a></div>
+    <div style="text-align: center;"><a class="buttonLink3" href="homepage.php">Go To Home Page</a> <a class="buttonLink3" href="logout.php">Logout</a> <a class="buttonLink3" href="/reset_password.php">Reset Your Password</a></div>
     <br><br>
 
 

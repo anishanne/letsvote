@@ -28,7 +28,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 <a href="/method3.php" class="btn btn-primary">Method 3 - Not Working Right Now</a> CSV File, 1 vote per line, 1 candidate per column. No Voting Codes. <br><br>
 <br>
 <br>
-<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
+<a href="home.php" class="btn btn-primary">Back to Admin Dashboard</a>
 </body>
 
 </html>

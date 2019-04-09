@@ -53,6 +53,6 @@ echo "</table>";
 mysqli_close($db);
 ?>
         <br>
-<div style="text-align: center; margin: 0 35%"><a class="buttonLink" href="/vote.php" style="color:white; background-color:#8AA4CE">To Voting</a></div>
+<div style="text-align: center; margin: 0 35%"><a class="buttonLink" href="vote.php" style="color:white; background-color:#8AA4CE">To Voting</a></div>
     </center>
 </body>

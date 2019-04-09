@@ -54,7 +54,7 @@ if ($result->num_rows > 0) {
     mysqli_close($db);
 ?>
         <br>
-<div style="text-align: center; margin: 0 35%"><a class="buttonLink" href="/calcResults.php" style="color:white; background-color:#8AA4CE">Tabulate Results</a></div>
+<div style="text-align: center; margin: 0 35%"><a class="buttonLink" href="calcResults.php" style="color:white; background-color:#8AA4CE">Tabulate Results</a></div>
     </center>
 </body>
 </html>

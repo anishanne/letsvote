@@ -40,4 +40,4 @@ echo $list;
 mysqli_close($db);
 ?>
 <br />
-<a href="/home.php" class="btn btn-primary">Back to Admin Dashboard</a>
+<a href="home.php" class="btn btn-primary">Back to Admin Dashboard</a>
