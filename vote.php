@@ -18,7 +18,6 @@
         mysqli_stmt_close($stmt);
         return false;
     }
-
 ?>
 
 <?php
@@ -147,21 +146,23 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link rel="stylesheet" type="text/css" href="vote.css">-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/admin.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">-->
     <title>Vote</title>
     <style type="text/css">
         body{
-            background-size: cover !important;
-            color: white
+            color: #54575B;
         }
     </style>
 </head>
 
-<body background="background.jpeg">
-
-<h2>Vote Form</h2>
-
+<div class="topbar" style="text-align: left">
+  <a href="/homepage.php" style="color: white; text-decoration:none;">
+      < Back to Home Page
+    </a>
+</div>
+<body>
+<center><h2 style="font-size:36px;">Vote Form</h2></center>
 <div class="wrapper">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group <?php echo (!empty($code_err)) ? 'has-error' : ''; ?>">
@@ -196,18 +197,19 @@
         <input type="checkbox" required name="rule4" value="No"/>I may not change my vote after I have voted .</br>
         <input type="checkbox" required name="rule5" value="No"/>If I misclick, I may report voting errors in the voting
         errors thread in NU, after which my code will be reset</br></br>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Vote">
+        <div class="form-group" style="margin: 0 35%;">
+            <input type="submit" class="buttonLink" style="background-color:#002C73; color: white;" value="Vote">
         </div>
     </form>
+    <br>
     <!--<button type="button" class="btn btn-primary><a href="Back">nuvote.ml</button>
     <form action="/" method="post">
         <input type="submit" class="btn btn-primary" value="Back">
     </form>-->
-    <a href="/" class="btn btn-primary">Back to Home Page</a>
-    <a href="public_nominations.php" class="btn btn-primary">Current Nominations</a>
+    <div style="margin: 0 35%;" class="buttonLink">
+        <a href="/public_nominations.php" style="color:white; text-decoration:none;">Current Nominations</a>
+    </div>
 </div>
-
 </body>
 
 </html>

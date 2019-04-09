@@ -27,6 +27,9 @@ button:hover {
   transition: opacity 0.2s;
 }
 
+.header-site{
+  background: #000000 url(https://thumbs.dreamstime.com/z/beach-symmetry-2701962.jpg) 100% 100% no-repeat;
+}
 .cancelbtn {
   width: auto;
   padding: 10px 18px;
@@ -69,7 +72,7 @@ span.psw {
   box-sizing: border-box;
 
 
-  background-color: #4CAF50;
+  background-color: #2079DB;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -80,6 +83,7 @@ span.psw {
   text-decoration: none;
   opacity: 1;
   transition: opacity 0.2s;
+  font-size: 0.9em;
 }
 .buttonLink:hover {
   opacity: 0.8;
@@ -103,6 +107,7 @@ img.avatar {
 
 .container {
   padding: 16px;
+  font-size: 0.9em;
 }
 
 span.psw {
