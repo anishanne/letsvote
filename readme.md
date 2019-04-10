@@ -11,9 +11,13 @@ Get started by checking out the [FAQ and Setup](https://github.com/anishanne/let
 * List of working web hosters.
 
 ## What's New?
+### Update 3.0.0
+* Complete redesign of the User Interface. 
+* Added feature so admins can put some text on the results page.
+
 ### Update 2.4.0
 * Minor bug fixes with login page.
-* Added feature so admins can put some text on the results page.
+* Fixed a bug where you couldn't instal it in a sub folder.
 
 ### Update 2.3.0
 * Removed background on vote counting pages to make it easier to copy and paste.
