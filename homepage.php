@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/admin.css">
+    <link rel="stylesheet" type="text/css" href="admin.css">
     <title>Let's Vote</title>
     <style type="text/css">
         body{
@@ -12,7 +12,7 @@
 
 </head>
 <div class="topbar" style="text-align: right">
-  <a href="/login.php" style="color: white; text-decoration:none;">
+  <a href="login.php" style="color: white; text-decoration:none;">
       Admin Login >
       </a>
 </div>
