@@ -12,7 +12,7 @@
     </style>
 </head>
 <div class="topbar">
-    <a href="/homepage.php" style="color:white; text-decoration: none;">< Back to Homepage</a>
+    <a href="homepage.php" style="color:white; text-decoration: none;">< Back to Homepage</a>
 </div>
 <body>
 <center><h2 style="font-size:36px;">Action Log</h2>

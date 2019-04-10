@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Welcome</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/admin.css">
+    <link rel="stylesheet" type="text/css" href="admin.css">
     <style type="text/css">
         body{
             color: #54575B;
@@ -12,7 +12,7 @@
     </style>
 </head>
 <div class="topbar" style="text-align: left">
-  <a href="/homepage.php" style="color: white; text-decoration:none;">
+  <a href="homepage.php" style="color: white; text-decoration:none;">
       < Back to Home Page
     </a>
 </div>

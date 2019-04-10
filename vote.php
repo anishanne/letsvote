@@ -146,7 +146,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/admin.css">
+    <link rel="stylesheet" type="text/css" href="admin.css">
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">-->
     <title>Vote</title>
     <style type="text/css">
@@ -157,7 +157,7 @@
 </head>
 
 <div class="topbar" style="text-align: left">
-  <a href="/homepage.php" style="color: white; text-decoration:none;">
+  <a href="homepage.php" style="color: white; text-decoration:none;">
       < Back to Home Page
     </a>
 </div>
